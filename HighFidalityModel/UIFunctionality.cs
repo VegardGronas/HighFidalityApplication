@@ -8,6 +8,8 @@ public class UIFunctionality : MonoBehaviour
     public float mouseSense;
     public bool inverse;
 
+    public InfiniteScroller InfiniteScroller;
+
     private void Start()
     {
         if (inverse) mouseSense = -mouseSense;
@@ -17,14 +19,7 @@ public class UIFunctionality : MonoBehaviour
     {
         if (Input.mouseScrollDelta.y != 0)
         {
-            foreach (GameObject go in scrollableObjects)
-            {
-                if(go != null && go.activeInHierarchy)
-                {
-                    go.transform.position +=
-                        new Vector3(0, Input.mouseScrollDelta.y * mouseSense, 0);
-                }
-            }
+            InfiniteScroller.Scroll(Input.mouseScrollDelta.y);
         }
     }
 }
