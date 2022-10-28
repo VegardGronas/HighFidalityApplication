@@ -8,20 +8,16 @@ using UnityEngine.UI;
 public class TextFunctions : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public Color color;
-    public Color highlightedColor;
     private EventSystem eveSystem;
 
     public GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
 
-    public List<GameObject> pages;
-    public GameObject pageReplaceent;
+    public GameObject activeWindow;
 
     private void Start()
     {
         eveSystem = FindObjectOfType<EventSystem>();
-        text.color = color;
     }
 
     private void Update()
@@ -51,20 +47,16 @@ public class TextFunctions : MonoBehaviour
 
     public void SwapPage()
     {
-        foreach (GameObject go in pages)
-        {
-            go.SetActive(false);
-            if (go == pageReplaceent) go.SetActive(true);
-        }
+        GameManager.Instance.SetActiveWindow(activeWindow);
     }
 
     public void HighlightedColor()
     {
-        text.color = highlightedColor;
+        text.color = GameManager.Instance.linksActive;
     }
 
     public void NormalColor()
     {
-        text.color = color;
+        text.color = GameManager.Instance.linksNormal;
     }
 }

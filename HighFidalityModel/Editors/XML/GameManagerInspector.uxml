@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Label tabindex="-1" text="EDIT UI SOME UI ELEMENTS" display-tooltip-when-elided="true" name="Info" style="align-items: center; justify-content: flex-start; flex-direction: column; position: relative; right: auto; left: auto; -unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold; color: rgb(0, 166, 117);" />
+    <ui:Foldout text="Hyper Links" name="HyperLinks">
+        <ui:Toggle label="Edit mode" name="Editmode" text="Edit Normal Color" binding-path="isEditingLinksNormal" />
+        <uie:ColorField label="NormalColor" value="#FFFFFFFF" name="NormalColor" binding-path="linksNormal" />
+        <ui:Toggle label="Edit mode" name="Editmod" text="Edit Active Color" binding-path="isEditingLinksActive" />
+        <uie:ColorField label="ActiveColor" value="#4AAFE2FF" name="ActiveColor" binding-path="linksActive" />
+    </ui:Foldout>
+    <uie:PropertyField binding-path="mainWindows" name="MainWindows" tooltip="Put all windows that we can change" label="Main Windows" />
+    <ui:Foldout text="Panels / Boarder" name="Panels">
+        <ui:Toggle label="Edit Mode" text="Edit Panel Color" name="EditpanelColor" binding-path="isEditingPanels" />
+        <uie:PropertyField name="Boarder" label="Boarders/Panels" binding-path="mainPanels" />
+        <uie:ColorField label="Panel Color" value="#DB2828FF" name="PanelColor" binding-path="panelColor" />
+    </ui:Foldout>
+</ui:UXML>

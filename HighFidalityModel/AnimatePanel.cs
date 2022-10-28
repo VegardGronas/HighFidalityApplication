@@ -9,12 +9,22 @@ public class AnimatePanel : MonoBehaviour
     private float distance;
     public float speed;
 
+    public bool isActive;
+
     private void Start()
     {
         startPos = transform.position;
     }
 
-    public void StartAnimating()
+    public void ActivatePanel()
+    {
+        isActive = !isActive;
+
+        if (isActive) EnterPanel();
+        else LeavePanel();
+    }
+
+    public void EnterPanel()
     {
         StopAllCoroutines();
         distance = Vector3.Distance(transform.position, animateTo.position);
