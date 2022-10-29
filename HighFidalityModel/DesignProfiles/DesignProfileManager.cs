@@ -13,4 +13,7 @@ public class DesignProfileManager : ScriptableObject
     public Sprite panelImage;
 
     public ColorBlock buttonColor;
+
+    public Color headerTextColor;
+    public Color textColor;
 }

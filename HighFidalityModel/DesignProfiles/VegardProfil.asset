@@ -25,3 +25,5 @@ MonoBehaviour:
     m_DisabledColor: {r: 0, g: 0.1947819, b: 0.41509432, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
+  headerTextColor: {r: 0.7352018, g: 1, b: 0.7028302, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
