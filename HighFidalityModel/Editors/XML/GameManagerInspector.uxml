@@ -1,5 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <ui:Label tabindex="-1" text="EDIT UI SOME UI ELEMENTS" display-tooltip-when-elided="true" name="Info" style="align-items: center; justify-content: flex-start; flex-direction: column; position: relative; right: auto; left: auto; -unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold; color: rgb(0, 166, 117);" />
     <uie:ObjectField label="DesignProfile" type="DesignProfileManager, Assembly-CSharp" name="Slangemos" binding-path="designPorfile" />
+    <ui:Label tabindex="-1" text="Add all windows in application" display-tooltip-when-elided="true" name="Description" style="color: rgb(129, 209, 156); -unity-font-style: bold;" />
     <uie:PropertyField binding-path="mainWindows" name="MainWindows" tooltip="Put all windows that we can change" label="Main Windows" />
+    <ui:Label tabindex="-1" text="Set the active window from start" display-tooltip-when-elided="true" name="Description" style="color: rgb(131, 219, 161); -unity-font-style: bold;" />
+    <uie:PropertyField name="ActiveWindow" tooltip="Set start window " label="Active window" binding-path="activeWindow" />
 </ui:UXML>

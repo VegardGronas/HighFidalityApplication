@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [CreateAssetMenu(fileName = "DesingProfile", menuName = "Design/Profile", order = 1)]
 public class DesignProfileManager : ScriptableObject
@@ -16,4 +17,6 @@ public class DesignProfileManager : ScriptableObject
 
     public Color headerTextColor;
     public Color textColor;
+    public TMP_FontAsset headerFont;
+    public TMP_FontAsset textFont;
 }

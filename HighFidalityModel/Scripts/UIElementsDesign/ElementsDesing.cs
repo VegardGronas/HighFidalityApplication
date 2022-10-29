@@ -34,10 +34,18 @@ public class ElementsDesing : MonoBehaviour, IPointerEnterHandler
         switch (uiElement)
         {
             case UIELemet.Header:
-                if (text != null) text.color = designProfile.headerTextColor;
+                if (text != null) 
+                {
+                    text.color = designProfile.headerTextColor;
+                    text.font = designProfile.headerFont;
+                }
                 break;
             case UIELemet.Text:
-                if (text != null) text.color = designProfile.textColor;
+                if (text != null) 
+                {
+                    text.color = designProfile.textColor;
+                    text.font = designProfile.textFont;
+                }
                 break;
         }
     }

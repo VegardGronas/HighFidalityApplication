@@ -27,3 +27,5 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   headerTextColor: {r: 0.7352018, g: 1, b: 0.7028302, a: 1}
   textColor: {r: 1, g: 1, b: 1, a: 1}
+  headerFont: {fileID: 11400000, guid: e0e00695c2c23a84fac581a6dd6758fd, type: 2}
+  textFont: {fileID: 0}
