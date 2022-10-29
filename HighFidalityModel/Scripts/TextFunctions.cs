@@ -15,16 +15,21 @@ public class TextFunctions : MonoBehaviour
 
     public GameObject activeWindow;
 
+    public DesignProfileManager designPorfile;
+
     private void Start()
     {
         eveSystem = FindObjectOfType<EventSystem>();
+        text = GetComponent<TextMeshProUGUI>();
+
+        designPorfile = GameManager.Instance.designPorfile;
     }
 
     private void Update()
     {
-        if (m_Raycaster == null) return;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (m_Raycaster == null) return;
             //Set up the new Pointer Event
             m_PointerEventData = new PointerEventData(eveSystem);
             //Set the Pointer Event Position to that of the mouse position
@@ -43,6 +48,10 @@ public class TextFunctions : MonoBehaviour
                 SwapPage();
             }
         }
+
+        if (!designPorfile.edit) return;
+        HighlightedColor();
+        NormalColor();
     }
 
     public void SwapPage()
@@ -52,11 +61,11 @@ public class TextFunctions : MonoBehaviour
 
     public void HighlightedColor()
     {
-        text.color = GameManager.Instance.linksActive;
+        text.color = designPorfile.linkActive;
     }
 
     public void NormalColor()
     {
-        text.color = GameManager.Instance.linksNormal;
+        text.color = designPorfile.linkNormal;
     }
 }
