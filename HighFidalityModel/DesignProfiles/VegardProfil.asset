@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa55f0600d048bb46a63d46a51d5d48b, type: 3}
   m_Name: VegardProfil
   m_EditorClassIdentifier: 
+  userName: "Vegard\u200B"
   edit: 0
   linkNormal: {r: 0.69593644, g: 0.8584906, b: 0.6519669, a: 1}
   linkActive: {r: 0.8584906, g: 0.6345121, b: 0.07694017, a: 1}

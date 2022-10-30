@@ -6,12 +6,14 @@ namespace SimpleAnimation
 {
     public enum AnimationType { Linear, PingPong }
     public enum Affection { MouseEnter, MouseExit, MouseStay, MouseClick }
+    public enum AnimatedElement { text, gameobject}
     public class SimpleAnimatoionManager : MonoBehaviour
     {
-        private RectTransform _rectTransfrom;
+        public RectTransform _rectTransfrom;
 
         public AnimationType animationType;
         public Affection affection;
+        public AnimatedElement animationElement;
         public Vector2 animateTo;
         public float moveSpeed = 5f;
 
@@ -19,7 +21,7 @@ namespace SimpleAnimation
 
         private void Start()
         {
-            _rectTransfrom = GetComponent<RectTransform>();
+            if(_rectTransfrom.gameObject == null) _rectTransfrom = GetComponent<RectTransform>();
             startPos = _rectTransfrom.anchoredPosition;
         }
 
@@ -40,7 +42,23 @@ namespace SimpleAnimation
             StartCoroutine(AnimateBack());
         }
 
+        public void StartAnimateByAmount()
+        {
+            animateTo = _rectTransfrom.anchoredPosition + animateTo;
+            StopAllCoroutines();
+            StartCoroutine(AnimateByAmount());
+        }
+
         private IEnumerator AnimateTo()
+        {
+            while (_rectTransfrom.anchoredPosition != animateTo)
+            {
+                _rectTransfrom.anchoredPosition = LinearAnimation(_rectTransfrom.anchoredPosition, animateTo, moveSpeed);
+                yield return null;
+            }
+        }
+
+        private IEnumerator AnimateByAmount()
         {
             while (_rectTransfrom.anchoredPosition != animateTo)
             {
