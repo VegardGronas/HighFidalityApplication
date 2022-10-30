@@ -15,8 +15,7 @@ public class AccountManager : MonoBehaviour
     public void CreateNewAccount()
     {
         if (password.text != passwordVerification.text) 
-        {
-            Debug.Log("YOu suck ass mother flecker! Learn to type!");     
+        {   
             return;
         } 
         CreateAccount create = new CreateAccount(username.text, passwordVerification.text);
