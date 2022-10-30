@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public DesignProfileManager designPorfile;
 
+    public User currentUser;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

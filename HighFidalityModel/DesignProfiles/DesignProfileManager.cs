@@ -7,6 +7,8 @@ using TMPro;
 [CreateAssetMenu(fileName = "DesingProfile", menuName = "Design/Profile", order = 1)]
 public class DesignProfileManager : ScriptableObject
 {
+    public string userName;
+
     public bool edit;
     public Color linkNormal;
     public Color linkActive;
