@@ -11,7 +11,7 @@ public class CustomEditors : Editor
     {
         VisualElement inspector = new VisualElement();
 
-        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/HighFidalityApplication/HighFidalityModel/Editors/XML/GameManagerInspector.uxml");
+        VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/HighFidalityApplication/HighFidalityModel/Editor/XML/GameManagerInspector.uxml");
         visualTree.CloneTree(inspector);
 
         return inspector;

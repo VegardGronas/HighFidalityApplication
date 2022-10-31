@@ -47,7 +47,7 @@ public class CreateAccount
     private Hash128 _password;
 
     private FileManageMent fileManagement;
-    string filePath = Application.persistentDataPath;
+    string filePath = Application.persistentDataPath + "/Users";
 
     public CreateAccount(string userName, string password)
     {
@@ -58,7 +58,7 @@ public class CreateAccount
 
         _password = hash;
 
-         fileManagement = new FileManageMent();
+        fileManagement = new FileManageMent();
 
         user = new User(fileManagement.ReturnFiles(filePath), _userName, _password);
     }
@@ -67,7 +67,7 @@ public class CreateAccount
     {
         if (fileManagement.VerifyUser(user, filePath)) { return; }
         string json = JsonUtility.ToJson(user);
-        File.WriteAllText(Application.persistentDataPath + "/User"+ user.constantID + ".json", json);
+        File.WriteAllText(filePath + "/User"+ user.constantID + ".json", json);
     }
 
     public bool LoadUser()
@@ -92,9 +92,10 @@ public class FileManageMent
     {
         var info = new DirectoryInfo(filePath);
         var fileInfo = info.GetFiles();
-        foreach (FileInfo file in fileInfo)
+
+        for (int i = 0; i < fileInfo.Length; i++)
         {
-            string json = File.ReadAllText(file.ToString());
+            string json = File.ReadAllText(fileInfo[i].ToString());
             User user = JsonUtility.FromJson<User>(json);
 
             if (_user.username == user.username && _user.password == user.password)
@@ -103,7 +104,6 @@ public class FileManageMent
                 return true;
             }
         }
-
         Debug.Log("User does not exist");
         return false;
     }
