@@ -21,6 +21,7 @@ public class AccountManager : MonoBehaviour
             return;
         } 
         CreateAccount create = new CreateAccount(username.text, password.text);
+        if (create.LoadUser()) return;
         create.SaveUser();
         GameManager.Instance.SetActiveWindow(activeWindow);
     }
@@ -45,6 +46,9 @@ public class CreateAccount
     private string _userName;
     private Hash128 _password;
 
+    private FileManageMent fileManagement;
+    string filePath = Application.persistentDataPath;
+
     public CreateAccount(string userName, string password)
     {
         _userName = userName;
@@ -54,35 +58,80 @@ public class CreateAccount
 
         _password = hash;
 
-        user = new User(_userName, _password);
+         fileManagement = new FileManageMent();
+
+        user = new User(fileManagement.ReturnFiles(filePath), _userName, _password);
     }
 
     public void SaveUser()
     {
-        User user = new User(_userName, _password);
+        if (fileManagement.VerifyUser(user, filePath)) { return; }
         string json = JsonUtility.ToJson(user);
-        if(File.Exists(Application.persistentDataPath + "/User.json")) File.WriteAllText(Application.persistentDataPath + "/User.json", json);
-        Debug.Log("User saved " + user.username);
+        File.WriteAllText(Application.persistentDataPath + "/User"+ user.constantID + ".json", json);
     }
 
     public bool LoadUser()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/User.json");
-        User _user = JsonUtility.FromJson<User>(json);
-        if (_userName != _user.username) return false;
-        else if (_password != _user.password) return false;
-        else return true;
+        if (fileManagement.VerifyUser(user, filePath)) { Debug.Log("User exists"); return true; }
+        else { Debug.Log("User does not exists"); return false; }
+    }
+}
+
+public class FileManageMent
+{
+    public FileManageMent() { }
+
+    public int ReturnFiles(string filePath)
+    {
+        var info = new DirectoryInfo(filePath);
+        var fileInfo = info.GetFiles();
+        return fileInfo.Length;
+    }
+
+    public bool VerifyUser(User _user, string filePath)
+    {
+        var info = new DirectoryInfo(filePath);
+        var fileInfo = info.GetFiles();
+        foreach (FileInfo file in fileInfo)
+        {
+            string json = File.ReadAllText(file.ToString());
+            User user = JsonUtility.FromJson<User>(json);
+
+            if (_user.username == user.username && _user.password == user.password)
+            {
+                Debug.Log("User exists");
+                return true;
+            }
+        }
+
+        Debug.Log("User does not exist");
+        return false;
+    }
+
+    public User ReturnUser(User _user, string filePath)
+    {
+        var info = new DirectoryInfo(filePath);
+        var fileInfo = info.GetFiles();
+        foreach (FileInfo file in fileInfo)
+        {
+            Debug.Log(file.ToString());
+        }
+        string json = File.ReadAllText(fileInfo[0].ToString());
+        User user = JsonUtility.FromJson < User > (json);
+        return user;
     }
 }
 
 [Serializable]
 public class User
 {
-    public User(string usernam, Hash128 hash) 
+    public User(int constantID, string usernam, Hash128 hash) 
     {
+        this.constantID = constantID;
         this.username = usernam;
         this.password = hash;
     }
+    public int constantID;
     public string username;
     public Hash128 password;
 }

@@ -8,6 +8,7 @@ using TMPro;
 public class DesignProfileManager : ScriptableObject
 {
     public string userName;
+    public int constantID;
     public Sprite profilePicture;
 
     public bool edit;
