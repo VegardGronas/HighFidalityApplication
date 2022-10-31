@@ -83,6 +83,7 @@ public class FileManageMent
 
     public int ReturnFiles(string filePath)
     {
+        if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
         var info = new DirectoryInfo(filePath);
         var fileInfo = info.GetFiles();
         return fileInfo.Length;
