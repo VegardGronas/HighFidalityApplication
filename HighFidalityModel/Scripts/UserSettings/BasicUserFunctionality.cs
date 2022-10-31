@@ -10,6 +10,8 @@ public class BasicUserFunctionality : MonoBehaviour
     public DesignProfileManager profile;
     public Image profilePicture;
 
+    public bool showLocation;
+
     private void OnEnable()
     {
         if (!GameManager.Instance) return;
@@ -22,7 +24,8 @@ public class BasicUserFunctionality : MonoBehaviour
     {
         profile = GameManager.Instance.designPorfile;
         if (!myProfileNameDisplay) return;
-        myProfileNameDisplay.text = profile.userName + ", Grimstad";
+        if(showLocation) myProfileNameDisplay.text = profile.userName + ", Grimstad";
+        else myProfileNameDisplay.text = profile.userName;
     }
 
     public void SetProfilePicture()

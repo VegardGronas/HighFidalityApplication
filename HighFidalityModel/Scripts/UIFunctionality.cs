@@ -8,7 +8,7 @@ public class UIFunctionality : MonoBehaviour
     public float mouseSense;
     public bool inverse;
 
-    public InfiniteScroller InfiniteScroller;
+    public List<InfiniteScroller> InfiniteScroller;
     public float mouseIncrease;
 
     private float coolDown;
@@ -29,7 +29,10 @@ public class UIFunctionality : MonoBehaviour
         {
             coolDown = cool;
             mouseIncrease += Input.mouseScrollDelta.y;
-            InfiniteScroller.Scroll(mouseIncrease);
+            foreach (InfiniteScroller scrol in InfiniteScroller)
+            {
+                scrol.Scroll(mouseIncrease);
+            }
             lastScroll = Input.mouseScrollDelta.y;
         }
         else

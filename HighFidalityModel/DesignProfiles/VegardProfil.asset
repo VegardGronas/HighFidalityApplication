@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa55f0600d048bb46a63d46a51d5d48b, type: 3}
   m_Name: VegardProfil
   m_EditorClassIdentifier: 
-  userName: "Vegard\u200B"
+  userName: "HOHO\u200B"
+  constantID: 0
   profilePicture: {fileID: 21300000, guid: e36d1a38d7aa309409e80bf66a089330, type: 3}
   edit: 0
   linkNormal: {r: 0.69593644, g: 0.8584906, b: 0.6519669, a: 1}

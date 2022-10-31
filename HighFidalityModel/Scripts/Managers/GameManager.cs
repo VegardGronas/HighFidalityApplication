@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviour
             else go.SetActive(true);
         }
     }
+
+    public void ExitApplication()
+    {
+        Application.Quit();
+    }
 }
